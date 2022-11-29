@@ -8,10 +8,10 @@ import android.widget.Toast
 class MyReceiver : BroadcastReceiver() {
 
     override fun onReceive(ctx: Context?, p1: Intent?) {
-       Toast.makeText(ctx, "AIRPLAN MODE ", Toast.LENGTH_LONG).show()
+       Toast.makeText(ctx, "sms received.... ", Toast.LENGTH_LONG).show()
 
-        var i = Intent(ctx, SecondAcrivity::class.java)
+       /* var i = Intent(ctx, SecondAcrivity::class.java)
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        ctx?.startActivity(i)
+        ctx?.startActivity(i)*/
     }
 }

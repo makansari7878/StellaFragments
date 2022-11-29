@@ -13,13 +13,25 @@
         android:theme="@style/Theme.DBSericeProj"
         tools:targetApi="31">
         <activity
-            android:name=".SplashActivity"
-            android:exported="true">
+            android:name=".NavDrawerAct"
+            android:exported="true"
+            android:label="@string/title_activity_nav_drawer"
+            android:theme="@style/Theme.DBSericeProj.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -33,21 +45,18 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
 
-        <receiver android:name=".AnsariReceiver"
-            android:exported="true"
-            android:enabled="true">
-
+        <receiver
+            android:name=".AnsariReceiver"
+            android:enabled="true"
+            android:exported="true">
             <intent-filter>
-                <action android:name="ansari_action"></action>
+                <action android:name="ansari_action" />
             </intent-filter>
-
         </receiver>
     </application>
 
