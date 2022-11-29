@@ -1,6 +1,7 @@
 package com.example.dbsericeproj
 
 import android.content.Intent
+import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -12,6 +13,10 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
+        var myIntentFilter = IntentFilter("ansari_action")
+        var myReceiver = AnsariReceiver()
+        registerReceiver(myReceiver, myIntentFilter)
 
         var myHandler = Handler()
 
