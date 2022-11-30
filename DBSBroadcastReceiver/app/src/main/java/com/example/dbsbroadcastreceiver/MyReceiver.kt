@@ -3,14 +3,18 @@ package com.example.dbsbroadcastreceiver
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.speech.tts.TextToSpeech
 import android.telephony.SmsMessage
 import android.util.Log
 import android.widget.Toast
+import java.util.*
 
-class MyReceiver : BroadcastReceiver() {
-
+class MyReceiver : BroadcastReceiver(),TextToSpeech.OnInitListener {
+    lateinit var tts : TextToSpeech
+    lateinit var  myMessage : String
     override fun onReceive(ctx: Context?, intent: Intent?) {
        Toast.makeText(ctx, "sms received.... ", Toast.LENGTH_LONG).show()
+         tts = TextToSpeech(ctx, this)
 
         var bundle = intent?.extras
         if(bundle != null){
@@ -20,7 +24,8 @@ class MyReceiver : BroadcastReceiver() {
             for( i in pdusObj.indices){
                 val currentMessage = SmsMessage.createFromPdu(pdusObj[i] as ByteArray)
 
-                val myMessage = currentMessage.displayMessageBody
+                 myMessage = currentMessage.displayMessageBody
+                tts.speak(myMessage, TextToSpeech.QUEUE_FLUSH, null,"")
                 val receiverPh = currentMessage.originatingAddress
 
                 Toast.makeText(ctx,"message is $myMessage and sender is : $receiverPh",Toast.LENGTH_LONG).show()
@@ -29,15 +34,26 @@ class MyReceiver : BroadcastReceiver() {
             }
 
 
+        }
 
+    }
 
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS) {
+            // set US English as language for tts
+            val result = tts!!.setLanguage(Locale.US)
+
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e("TTS","The Language specified is not supported!")
+            } else {
+                Log.e("TTS","The Language specified is  supported!")
+                tts.speak(myMessage, TextToSpeech.QUEUE_FLUSH, null,"")
+            }
+
+        } else {
+            Log.e("TTS", "Initilization Failed!")
         }
 
 
-
-
-       /* var i = Intent(ctx, SecondAcrivity::class.java)
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        ctx?.startActivity(i)*/
     }
 }
