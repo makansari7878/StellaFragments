@@ -1,31 +1,28 @@
 package com.example.stelkotlinproj
 
-class Tiger(){
-    lateinit var name : String
-    var legs : Int = 4
+import kotlinx.coroutines.*
+import kotlin.concurrent.thread
 
-    fun tigerSounds(){
-        name = "TIGER"
-        println("tiger roars" + name)
+class Circle(){
+
+    fun area(){
+        println("area of circle")
     }
 
-   inner class subClass{
-        var ears = 2
-        fun subclassmethod(){
-            println("subclass" + legs)
+    companion object{
+        var college = "ABC"
+        fun payFees(){
+            println("student has to pay fees")
         }
     }
 }
 
+
+
 fun main(){
 
-    var tiger = Tiger()
-    println(tiger.legs)
-    tiger.tigerSounds()
+    println(Circle.college)
+    Circle.payFees()
 
-    var innercls = Tiger().subClass()
-    println(innercls.ears)
-    innercls.subclassmethod()
 
 }
-
