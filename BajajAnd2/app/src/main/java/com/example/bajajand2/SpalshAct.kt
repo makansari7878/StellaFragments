@@ -10,9 +10,9 @@ class SpalshAct : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_spalsh)
-        var texviewRes = findViewById<TextView>(R.id.textViewSplash)
+        //var texviewRes = findViewById<TextView>(R.id.textViewSplash)
 
-        var handler = Handler()
+       /* var handler = Handler()
         Thread{
 
             for(i in 1..5){
@@ -26,6 +26,6 @@ class SpalshAct : AppCompatActivity() {
             var i = Intent(this, MainActivity::class.java)
             startActivity(i)
 
-        }.start()
+        }.start()*/
     }
 }

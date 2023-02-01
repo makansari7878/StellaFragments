@@ -1,4 +1,4 @@
-package com.example.bajajand2
+package com.example.bajajnavfrag
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
