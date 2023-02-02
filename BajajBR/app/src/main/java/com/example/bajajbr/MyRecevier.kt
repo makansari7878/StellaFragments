@@ -8,7 +8,7 @@ import android.widget.Toast
 class MyRecevier : BroadcastReceiver() {
     override fun onReceive(ctx: Context?, intent: Intent?) {
 
-        Toast.makeText(ctx, "AIRPLANE MODE", Toast.LENGTH_LONG).show()
+        Toast.makeText(ctx, "RECEIVED SMS", Toast.LENGTH_LONG).show()
 
     }
 }

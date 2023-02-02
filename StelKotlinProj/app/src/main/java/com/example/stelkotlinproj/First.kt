@@ -3,28 +3,69 @@ package com.example.stelkotlinproj
 import kotlinx.coroutines.*
 import kotlin.concurrent.thread
 
+class Animal(){
 
+    var age = 10
+    var legs = 4
 
-fun main() = runBlocking{
+    fun playing(){
+        println("Animal is playing")
+    }
 
-   println("main fun started on ${Thread.currentThread().name}")
-
-  var job : Job = GlobalScope.launch {
-      println("Coroutine started on ${Thread.currentThread().name}")
-      for (i in 1..10){
-          println(i)
-          setDelay(1000)
-      }
-
-      println("Coroutine ended on ${Thread.currentThread().name}")
-  }
-    delay(5000)
-
-    job.cancelAndJoin()
-
-    println("main fun ended on ${Thread.currentThread().name}")
+    fun eating(){
+        println("Animal is eating")
+    }
 }
 
-suspend fun setDelay(time : Long){
-    delay(time)
+
+fun main() {
+
+    var animal : Animal?= Animal()
+
+    /*Animal().apply {
+        println(this.age)
+        println(legs)
+        eating()
+        playing()
+    }*/
+
+    /*var res = with(animal){
+        this.eating()
+        playing()
+        var newage = age + 10
+        newage
+    }*/
+
+//    println("new age is $res")
+/*
+    animal?.let {
+        println("animal is ready")
+        println(it.age)
+        it.eating()
+    }
+
+    var res = animal?.run {
+        println("animal is ready")
+        println(this.age)
+        eating()
+        "result"
+    }
+    println(res)
+
+    println("continue of the program")*/
+
+/*    var arr : MutableList<Int> = mutableListOf(45,65,45,11,22)
+    arr.add(100)
+    println(arr)
+
+    arr.remove(11)
+    println(arr)*/
+
+    var arr : MutableList<Int> = mutableListOf(45,65,45,11,22)
+    arr.also {
+        it.add(100)
+        it.remove(11)
+        println(it)
+    }
+
 }
