@@ -8,18 +8,22 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bajajbr.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var usersList : ArrayList<Users>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        //setContentView(R.layout.activity_main)
 
-        var myReccylerView = findViewById<RecyclerView>(R.id.myrecycleview)
-        myReccylerView.layoutManager = LinearLayoutManager(this,RecyclerView.VERTICAL, false)
+        var mainXml = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(mainXml.root)
+
+       // var myReccylerView = findViewById<RecyclerView>(R.id.myrecycleview)
+        mainXml.myrecycleview.layoutManager = LinearLayoutManager(this,RecyclerView.VERTICAL, false)
 
         usersList = ArrayList<Users>()
-        myReccylerView.adapter = MyAdapter(usersList)
+        mainXml.myrecycleview.adapter = MyAdapter(usersList)
 
 
         gettingData()
