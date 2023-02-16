@@ -17,9 +17,15 @@ class RedFragment : Fragment() {
         var view = inflater.inflate(R.layout.red_fragments, container, false  )
         var myRedDataButton = view.findViewById<Button>(R.id.buttonRedData)
         myRedDataButton.setOnClickListener {
-            var blueFrag = BlueFragment()
+           /* var blueFrag = BlueFragment()
+            var bundle = Bundle()
+            bundle.putString("mykey","ANSARI")
+            blueFrag.arguments = bundle
+
             fragmentManager?.beginTransaction()?.
-            replace(R.id.myconstrlayout, blueFrag)?.addToBackStack(null)?.commit()
+            replace(R.id.myconstrlayout, blueFrag)?.addToBackStack(null)?.commit()*/
+            var dataInterface = activity as DataInterface
+            dataInterface.saveData("ANSARI")
         }
         return view
     }
