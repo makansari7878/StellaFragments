@@ -1,6 +1,7 @@
 package com.example.stellaservices
 
 import android.content.Intent
+import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -15,13 +16,17 @@ class SplashActviity : AppCompatActivity() {
         var splshText = findViewById<TextView>(R.id.textViewSplash)
         var handler = Handler()
 
+        var myReceiver = MyReceiver()
+        var myIntentFilter = IntentFilter("android.intent.action.AIRPLANE_MODE")
+        registerReceiver(myReceiver, myIntentFilter)
+
 
         thread {
             //Toast.makeText(this, "my toast", Toast.LENGTH_LONG).show()
             for( i in 1..5){
                 Thread.sleep(1000)
                 handler.post {
-                    Toast.makeText(this, "my toast", Toast.LENGTH_SHORT).show()
+                   // Toast.makeText(this, "my toast", Toast.LENGTH_SHORT).show()
                     splshText.setText("${i}")
                 }
             }
